@@ -13,3 +13,5 @@ steps:
 - title: What is GitHub?
   description: After watching this video, close the first issue in your repository.
   video: https://youtube.com/embed/w3jLJU7DT5E
+  
+  @[youtube](http://www.youtube.com/embed/2Et13pH2484)
