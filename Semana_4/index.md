@@ -6,6 +6,7 @@ En este apartado podrá encontrar información adicional relacionada a este mód
 - [Ej1](https://www.codecompiling.net/files/slides/UML_clase_02_UML_casos_de_uso.pdf).
 
 ## Digrama de clases 
+- [Diagrama de clases y sus relaciones](http://elvex.ugr.es/decsai/java/pdf/3c-relaciones.pdf)
 - [Relaciones: Association, Composition and Aggregation in Java](https://www.geeksforgeeks.org/association-composition-aggregation-java/) 
 
 
