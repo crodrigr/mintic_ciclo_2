@@ -1,6 +1,8 @@
+![bannerMinticUnab.jpg](https://crodrigr-gmail-com.trinket.io/api/files/608ed78845fe6aba0d7c02fe/bannerminticunab.jpeg "bannerMinticUnab.jpg")
 # Bienvenidos al Ciclo 2 de la Misiontic 2022
 
-Estimados tripulantes en esta sección podrás encontrar todo el material de apoyo en este viaje del ciclo 2. Abordaremos el paradigma de la programación orientada a objetos (POO) a través la tecnología Java. 
+Estimados tripulantes en esta sección podrás encontrar todo el material de apoyo en este viaje del ciclo 2, en el cual, abordaremos el paradigma de la programación orientada a objetos (POO) a través la tecnología Java. <br><br>
+Este espacio esta distribuido por semanas, de tal forma, que en cada semana se colocara todo el material visto por semana, tanto el contenido conectual, ejemplos y ejerccios que se desarrollen en clase. 
 
 ## Información de Interes
 
