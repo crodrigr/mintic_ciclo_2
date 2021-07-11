@@ -6,7 +6,7 @@ Este espacio está distribuido por semanas, de tal forma, que en cada semana enc
 
 ## Información de Interes
 
-En esta sección encontrara información de relevancia para el desarrollo de este ciclo
+En esta sección encontraras información de relevancia para el desarrollo de este ciclo
 
 - [jdk 15](https://www.youtube.com/watch?v=2Et13pH2484) <br>
 
