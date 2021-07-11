@@ -6,6 +6,8 @@ Estimados tripulantes en esta sección podrás encontrar todo el material de apo
 
 En esta sección encontrara información de relevancia para el desarrollo de este ciclo
 
-- Instalación de Java y Netbeean https://www.youtube.com/watch?v=2Et13pH2484
+- [jdk 15](https://www.youtube.com/watch?v=2Et13pH2484) <br>
+
+- Instalación de Java y Netbeean [Links](https://www.youtube.com/watch?v=2Et13pH2484) <br>
 [![](https://img.youtube.com/vi/2Et13pH2484/0.jpg)](https://www.youtube.com/watch?v=2Et13pH2484)
 
