@@ -8,7 +8,7 @@ Este espacio está distribuido por semanas, de tal forma, que en cada semana enc
 
 En esta sección encontraras información de relevancia para el desarrollo de este ciclo
 
-- Download [jdk 15](https://www.youtube.com/watch?v=2Et13pH2484) <br>
+- Download [jdk 15](https://www.oracle.com/java/technologies/javase/jdk15-archive-downloads.html) <br>
 - Download [Netbeans](https://netbeans.apache.org/download/nb120/nb120.html)<br>
 - Instalación de Java y Netbeean [Links](https://www.youtube.com/watch?v=2Et13pH2484) <br>
 [![](https://img.youtube.com/vi/2Et13pH2484/0.jpg)](https://www.youtube.com/watch?v=2Et13pH2484)
