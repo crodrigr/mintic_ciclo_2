@@ -126,5 +126,14 @@ public class JOptionPane_07 {
 }
 ```
 
+### Convertir un string a int con la clase Integer
+```java
+          String numero="5";
+          int b=10;
+          int suma=Integer.parseInt(numero)+b;                   
+          System.out.println(suma);
+
+```
+
 
 
