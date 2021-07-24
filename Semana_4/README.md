@@ -1,7 +1,7 @@
-# Week 3
-A continuación se presenta el contenido de los temas correspondientes a la semana III. 
+# Week 4
+A continuación se presenta el contenido de los temas correspondientes a la semana IV. 
 
-![](https://github.com/crodrigr/mintic_ciclo_2/blob/main/recursos/img/contenido_semana_3.jpg)
+![](https://github.com/crodrigr/mintic_ciclo_2/blob/main/recursos/img/contenido_semana_4.jpg)
 
 # Diseño orientado a objetos
 
