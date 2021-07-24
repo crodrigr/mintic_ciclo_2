@@ -6,15 +6,23 @@ public class Persona {
     //Atributos
     public String nombres;
     public String apellidos;
+    public static String horaDespertar="07:00:00";
     
     public Persona(){
+       
     }
     
     public Persona(String a,String b){
         this.nombres=a;
-        this.apellidos=b;   
+        this.apellidos=b;
+        
     }
     
+    public String getHoraDespertar(){
+    
+       return horaDespertar;
+    
+    }
     
     //Metodos    
     public void setNombres(String nombres){
