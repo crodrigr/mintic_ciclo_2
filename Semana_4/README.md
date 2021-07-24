@@ -1,3 +1,8 @@
+# Week 3
+A continuación se presenta el contenido de los temas correspondientes a la semana III. 
+
+![](https://github.com/crodrigr/mintic_ciclo_2/blob/main/recursos/img/contenido_semana_3.jpg)
+
 # Diseño orientado a objetos
 
 En este apartado podrá encontrar información adicional relacionada a este módulo que le será de mucha ayuda en su proceso de formación.
