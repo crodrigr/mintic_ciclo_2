@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class NotasEstudiantes {
     
-    static Scanner leer=new Scanner(System.in);
-    
+    static Scanner leer=new Scanner(System.in);    
     public static void main(String[] args){
          //tipoDato[] nombreVariable=new TipoDato[tamaño];
          //Persona[]  personas=new Persona[20];

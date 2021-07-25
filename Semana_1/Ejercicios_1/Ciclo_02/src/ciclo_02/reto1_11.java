@@ -17,7 +17,10 @@ public class reto1_11 {
         
         System.out.println("Ingrese el cromosoma de la escena del crimen: ");
         String cromosoma=leer.nextLine();
-        getGuilty(personas,cromosomas,cromosoma);        
+        getGuilty(personas,cromosomas,cromosoma); 
+        
+        
+        
 
     }
     
