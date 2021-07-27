@@ -10,6 +10,26 @@ public class reto1Ejemplo {
         String[] cromosomas = new String[size];//cromosomas
         loadData(personas,cromosomas);
         printData(personas,cromosomas);
+        
+        compararCromosomas(cromosomas,"0001");
+        
+        
+        
+    
+    }
+    
+    public static void compararCromosomas(String[] cromosomas,String prueba){
+        for(int i=0;i<size;i++){
+             for(int j=0;j<cromosomas[i].length();j++){
+                 if( cromosomas[i].charAt(j)==prueba.charAt(j)){
+                    System.out.println(cromosomas[i].charAt(j)+"=="+prueba.charAt(j));
+                 }else{
+                     System.out.println(cromosomas[i].charAt(j)+"!="+prueba.charAt(j));
+                 }
+            }
+           System.out.println("----------------------------------------");
+        }
+          
     
     }
 
