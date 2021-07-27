@@ -6,6 +6,10 @@ public class Simulacion {
         Automovil au1 = new Automovil("Mercedez","Rojo","FMS012",220);
         Automovil au2 = new Automovil("BMW","Blanco","GRS250",220);
         Automovil au3 = new Automovil("Mercedez","Negro","FSO761",220);
+        
+        Automovil[] autos=new Automovil[20];
+        
+        
         System.out.println("Encender motores");
         au1.encenderMotor();
         au2.encenderMotor();
