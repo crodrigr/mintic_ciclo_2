@@ -15,19 +15,6 @@ public class Automovil {
     //metodos    
     public Automovil(){
     }
-
-    public void encenderMotor(){
-       
-         if(this.encendido==true){
-            System.out.println("Ya esta encendido el motor");  
-         }else{
-            this.encendido=true;
-             System.out.println("El motor se puso en marcha");  
-         }
-    
-    }
-    
-   
     
     public Automovil(String marca, String color, String placa, int cilindraje) {
         this.marca = marca;
@@ -37,9 +24,50 @@ public class Automovil {
         this.encendido=false;
         this.velocidad=0;
     }
+    
+     public void encenderMotor(){
+       
+         if(this.encendido==true){
+            System.out.println("Ya esta encendido el motor");  
+         }else{
+            this.encendido=true;
+             System.out.println("El motor se puso en marcha");  
+         }
+    
+    }
+     
+    public void acelerar(int velocidad){
+        
+        this.velocidad=this.velocidad+velocidad;
+        
+    }
+    
+    public void frenar(int velocidad){      
+       if(this.velocidad-velocidad>=0){ 
+          this.velocidad=this.velocidad-velocidad;
+       }else{
+         this.velocidad=0;
+        }
+    }
+    
+    public void girarDerecha(){
+       System.out.println("Estoy girando a la derecha");
+    }
+    
+     public void girarIzquierda(){
+       System.out.println("Estoy girando a la izquierda");
+    }
 
     public String getMarca() {
         return marca;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
     }
 
     public void setMarca(String marca) {
