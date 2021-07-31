@@ -8,6 +8,7 @@ A continuación se presenta el contenido de los temas correspondientes a la sema
 En este apartado podrá encontrar información adicional relacionada a este módulo que le será de mucha ayuda en su proceso de formación.
 
 ## Herramientas de diseño
+- [app.digrams.net](https://app.diagrams.net/)
 - [Lucichart](https://www.lucidchart.com/pages/es/tutorial-de-diagrama-de-clases-uml)
 
 ## Casos de Usos Ejemplos:
