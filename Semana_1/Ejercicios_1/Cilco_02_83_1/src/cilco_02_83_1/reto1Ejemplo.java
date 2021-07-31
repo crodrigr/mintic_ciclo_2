@@ -11,14 +11,19 @@ public class reto1Ejemplo {
         loadData(personas,cromosomas);
         printData(personas,cromosomas);
         
-        compararCromosomas(cromosomas,"0001");
+        int[] rta=compararCromosomas(cromosomas,"0001");
+        
+        System.out.println("El culpable es: "+personas[rta[1]]+" con un % "+rta[0]);
         
         
         
     
     }
     
-    public static void compararCromosomas(String[] cromosomas,String prueba){
+    public static int[] compararCromosomas(String[] cromosomas,String prueba){
+        
+        int rta[]=new int[2];
+        
         for(int i=0;i<size;i++){
              for(int j=0;j<cromosomas[i].length();j++){
                  if( cromosomas[i].charAt(j)==prueba.charAt(j)){
@@ -29,8 +34,12 @@ public class reto1Ejemplo {
             }
            System.out.println("----------------------------------------");
         }
-          
-    
+        rta[0]=75;
+        rta[1]=4;
+        
+        
+        
+        return rta;
     }
 
     public static void printData(String[] p,String[] c){
