@@ -12,6 +12,10 @@ public class Libreria {
     public static void main(String[] args) {
        
         Publicacion[] listPublicaciones=new Publicacion[10];
+        
+        Publicacion p=new Publicacion();
+        
+        
         int op=0;
         do{
           op=menu();

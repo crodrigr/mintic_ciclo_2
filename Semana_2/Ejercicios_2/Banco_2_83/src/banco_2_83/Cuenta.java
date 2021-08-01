@@ -33,9 +33,9 @@ public class Cuenta {
     }
     
     public void setBonificacion(){
-       if(this.saldo>500){
-         this.saldo+=this.saldo*0.02;
-       }
+        if(this.saldo>500){
+          this.saldo+=this.saldo*0.02;         
+        }       
     }
     
     public void balance(){

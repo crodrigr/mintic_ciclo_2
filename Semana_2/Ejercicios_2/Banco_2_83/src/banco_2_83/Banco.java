@@ -9,7 +9,10 @@ public class Banco {
 
     public static void main(String[] args) {
         Cuenta[] cuentas = new Cuenta[10];
+
         int op = 0;
+        int numeroCuenta = 0;
+        int pos = 0;
         do {
             op = menu();
             switch (op) {
@@ -21,10 +24,10 @@ public class Banco {
                     break;
                 case 3:
                     System.out.println("Ingrese el número de cuenta a buscar");
-                    int numeroCuenta = leer.nextInt();
-                    int pos = buscarCuenta(numeroCuenta, cuentas);
+                    numeroCuenta = leer.nextInt();
+                    pos = buscarCuenta(numeroCuenta, cuentas);
                     if (pos != -1) {
-                        System.out.println("Ingrese el valor a retirar");
+                        System.out.println("Ingrese el valor a retiro");
                         double valorRe = leer.nextDouble();
                         System.out.println(cuentas[pos].getSaldo());
                         cuentas[pos].retiro(valorRe);
@@ -34,10 +37,24 @@ public class Banco {
                     }
                     break;
                 case 4:
-                    System.out.println("Deposito");
+                    System.out.println("Ingrese el número de cuenta a buscar");
+                    numeroCuenta = leer.nextInt();
+                    pos = buscarCuenta(numeroCuenta, cuentas);
+                    if (pos != -1) {
+                        System.out.println("Ingrese el valor a depositar");
+                        double valorRe = leer.nextDouble();
+                        System.out.println(cuentas[pos].getSaldo());
+                        cuentas[pos].deposito(valorRe);
+                        System.out.println(cuentas[pos].getSaldo());
+                    } else {
+                        System.out.println("El número de cuenta a buscar no existe");
+                    }
+                    break;
+                case 5:
+                    aplicarBonificaciones(cuentas);  
                     break;
             }
-        } while (op >= 1 && op < 5);
+        } while (op >= 1 && op < 6);
         System.out.println("-------FIN PROGRAMA-----");
 
     }
@@ -57,9 +74,20 @@ public class Banco {
         System.out.println("___2.Listar Cuentas____");
         System.out.println("___3.Retiro____________");
         System.out.println("___4.Deposito____________");
-        System.out.println("___5.Salir_____________");
+        System.out.println("___5.Aplicar bonificacion_");
+        System.out.println("___6.Salir_____________");
         int opcion = leer.nextInt();
         return opcion;
+
+    }
+
+    public static void aplicarBonificaciones(Cuenta[] c) {
+        System.out.println("Aplicando bonificaciones a todas las cuentas: ");
+        for (int i = 0; i < c.length; i++) {
+            if (c[i] != null) {
+                c[i].setBonificacion();
+            }
+        }
 
     }
 
@@ -78,8 +106,7 @@ public class Banco {
         System.out.println("Ingresar número de la cuenta: ");
         int numero = leer.nextInt();
         System.out.println("Ingresar el titular de la cuenta: ");
-        String titular = leer.nextLine();
-        leer.nextLine();
+        String titular = leer.next();
         System.out.println("Ingresar el saldo de la cuenta: ");
         double saldo = leer.nextDouble();
         Cuenta c1 = new Cuenta(numero, titular, saldo);
