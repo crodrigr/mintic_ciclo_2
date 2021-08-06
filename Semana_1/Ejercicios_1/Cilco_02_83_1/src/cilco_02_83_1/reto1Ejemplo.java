@@ -11,35 +11,42 @@ public class reto1Ejemplo {
         loadData(personas,cromosomas);
         printData(personas,cromosomas);
         
-        int[] rta=compararCromosomas(cromosomas,"0001");
+        compararCromosomas(cromosomas,"0001",personas);
         
-        System.out.println("El culpable es: "+personas[rta[1]]+" con un % "+rta[0]);
+        
         
         
         
     
     }
     
-    public static int[] compararCromosomas(String[] cromosomas,String prueba){
+    public static void compararCromosomas(String[] cromosomas,String prueba,String[] personas){
         
-        int rta[]=new int[2];
-        
+       
+        int porcentajeAnt=0;
+       
+        int culpableAnt=0;
         for(int i=0;i<size;i++){
+             int cont=0;
+             int porcentaje=0;
+              int culpable=i;
              for(int j=0;j<cromosomas[i].length();j++){
                  if( cromosomas[i].charAt(j)==prueba.charAt(j)){
                     System.out.println(cromosomas[i].charAt(j)+"=="+prueba.charAt(j));
+                    cont++;
                  }else{
                      System.out.println(cromosomas[i].charAt(j)+"!="+prueba.charAt(j));
                  }
             }
-           System.out.println("----------------------------------------");
+            porcentaje=cont*100/4;
+            if(porcentajeAnt<porcentaje){
+              porcentajeAnt=porcentaje;
+              culpableAnt=culpable;
+            }
+           System.out.println("------------------: porcentajeAnt: "+porcentaje );
         }
-        rta[0]=75;
-        rta[1]=4;
+         System.out.println("La persona culpable es: "+personas[culpableAnt]+ "porcentaje: "+porcentajeAnt );
         
-        
-        
-        return rta;
     }
 
     public static void printData(String[] p,String[] c){
