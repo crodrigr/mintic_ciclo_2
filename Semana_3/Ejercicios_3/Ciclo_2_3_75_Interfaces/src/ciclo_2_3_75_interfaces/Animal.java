@@ -2,8 +2,14 @@
 package ciclo_2_3_75_interfaces;
 
 public abstract class Animal implements AccionesGeneral {
+    
     private String especie;
     private String tipo;
+
+    public Animal() {
+    }
+    
+    
 
     public Animal(String especie, String tipo) {
         this.especie = especie;

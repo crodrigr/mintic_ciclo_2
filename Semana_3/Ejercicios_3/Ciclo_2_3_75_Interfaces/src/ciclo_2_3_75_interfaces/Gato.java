@@ -10,8 +10,6 @@ public class Gato extends Animal{
         this.color = color;
     }
 
-   
-    
 
     public String getColor() {
         return color;
@@ -23,27 +21,34 @@ public class Gato extends Animal{
 
     @Override
     public void hablar() {
-        System.out.print("Miau miau !!!!!")  ;
+        System.out.println("Miau miau !!!!!")  ;
     }
 
     @Override
     public void desplazarse() {
-       System.out.print("El gato se esta desplazando !")  ;
+       System.out.println("El gato se esta desplazando !")  ;
     }
 
     @Override
     public void jugar() {
-       System.out.print("El gato esta jugando !")  ;
+       System.out.println("El gato esta jugando !")  ;
     }
 
     @Override
     public void alimentarse() {
-       System.out.print("El gato se esta alimentandose !")  ;
+       System.out.println("El gato se esta alimentando !")  ;
     }
 
     @Override
     public void dormir() {
-        System.out.print("El gato se esta dormiendo !")  ;
+        System.out.println("El gato  esta durmiendo !")  ;
+    }
+
+    @Override
+    public void display() {
+      System.out.println("Color: "+this.color) ; 
+      System.out.println("Especie: "+super.getEspecie()); 
+      System.out.println("Especie: "+super.getTipo()); 
     }
     
 }

@@ -8,6 +8,7 @@ public interface AccionesGeneral {
     public abstract void jugar();
     public abstract void alimentarse();
     public abstract void dormir();
+    public abstract void display();
     
     
 }

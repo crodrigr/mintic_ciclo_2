@@ -23,6 +23,31 @@ public class Hombre extends Humano{
       System.out.println("El Hombre tiene la edad: "+super.getEdad()+" nombre: "+super.getNombre());  
     }
 
+    @Override
+    public void hablar() {
+       System.out.println("El hombre está hablando");
+    }
+
+    @Override
+    public void desplazarse() {
+        System.out.println("El hombre se está desplanzando"); 
+    }
+
+    @Override
+    public void jugar() {
+       System.out.println("El hombre se está jugando"); 
+    }
+
+    @Override
+    public void alimentarse() {
+        System.out.println("El hombre se está alimentado"); 
+    }
+
+    @Override
+    public void dormir() {
+       System.out.println("El hombre esta durmiendo"); 
+    }
+
     
     
     
