@@ -38,9 +38,27 @@ public class Libreria {
                     System.out.println("Listar todas ventas");
                     ventas.mostrarVentas();
                     break;
+                case 6:
+                    //System.out.println("Listar todas ventas");
+                   getMayorPrecio(publicaciones);
+                    break;
             }
 
-        } while (op >= 1 && op < 6);
+        } while (op >= 1 && op < 7);
+
+    }
+
+    public static void getMayorPrecio(ArrayList<Publicacion> publicaciones) {
+        float mayorPrecio = 0.f;
+        int pos = 0;
+        for (int i = 0; i < publicaciones.size(); i++) {
+            if (mayorPrecio < publicaciones.get(i).getPrecio()) {
+                pos = i;
+                mayorPrecio = publicaciones.get(i).getPrecio();
+            }
+        }
+        System.out.println("La publicación con mayor precio es: ");
+        publicaciones.get(pos).mostrar();
 
     }
 
@@ -51,7 +69,7 @@ public class Libreria {
         Libro l4 = new Libro(1582, 2021, "Python", 35000.2f);
         Disco d1 = new Disco(56.56f, "Vallenato", 35000.2f);
         Disco d2 = new Disco(86.56f, "Rock", 75000.2f);
-        Disco d3 = new Disco(78.56f, "Ranchera", 89000.2f);
+        Disco d3 = new Disco(78.56f, "Ranchera", 90000.2f);
         Disco d4 = new Disco(63.56f, "Clasica", 25000.2f);
         publicaciones.add(l1);
         publicaciones.add(l2);
@@ -59,9 +77,9 @@ public class Libreria {
         publicaciones.add(l4);
         publicaciones.add(d1);
         publicaciones.add(d2);
-        publicaciones.add(d3);        
+        publicaciones.add(d3);
         publicaciones.add(d4);
-       
+
     }
 
     public static void mostrarPublicaciones(ArrayList<Publicacion> publicaciones) {
@@ -127,7 +145,8 @@ public class Libreria {
         System.out.println("____3.Mostrar Publicaciones_____");
         System.out.println("____4.Guardar Venta_____________");
         System.out.println("____5.Mostrar Ventas_____________");
-        System.out.println("____6.Salir_____________________");
+        System.out.println("____6.Publicacion mayor precio___");
+        System.out.println("____7.Salir_____________________");
         int op = leer.nextInt();
         return op;
     }
