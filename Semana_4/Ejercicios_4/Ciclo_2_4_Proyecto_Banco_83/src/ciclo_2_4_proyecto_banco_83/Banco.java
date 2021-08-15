@@ -59,30 +59,72 @@ public class Banco {
     public void setClientes(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
     }
-    
-    public void display(){
-      System.out.println("Banco: "+this.nombre);
-      System.out.println("Direccion: "+this.direccion);
+
+    public void display() {
+        System.out.println("Banco: " + this.nombre);
+        System.out.println("Direccion: " + this.direccion);
+    }
+
+    public void setEmpleado(Empleado emp) {
+        this.empleados.add(emp);
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.clientes.add(cliente);
+    }
+
+    public void displayClientes() {
+        System.out.println("Listado de clientes del banco " + this.nombre);
+        for (Cliente cliente : clientes) {
+            System.out.println("------------------");
+            cliente.display();
+        }
+    }
+
+    public void displayEmpleados() {
+        System.out.println("Listado de empleados del banco " + this.nombre);
+        for (Empleado emp : empleados) {
+            System.out.println("------------------");
+            emp.display();
+        }
     }
     
-    public void setEmpleado(Empleado emp){
-       this.empleados.add(emp);
-    }    
-    
-    public void displayClientes(){
-        System.out.println("Listado de clientes del banco "+this.nombre);
-      for(Cliente   cliente :   clientes ){
-          System.out.println("------------------");
-          cliente.display();
-      }    
+    public void abrirCuentaCliente(int pos,Cuenta cuenta){
+      clientes.get(pos).guardarCuenta(cuenta);
     }
     
-    public void displayEmpleados(){
-        System.out.println("Listado de empleados del banco "+this.nombre);
-      for(Empleado   emp :   empleados ){
-          System.out.println("------------------");
-          emp.display();
-      }    
+    public int getNumeroCuenta(){
+        int totalCuentas=0;
+        for(Cliente c : clientes){
+            totalCuentas+=c.getCuentas().size();
+        }
+       return totalCuentas;
+    }
+    
+    public int buscarCliente(String cedula){
+         for(int i=0;i<clientes.size();i++){              
+             if(clientes.get(i).getCedula().equals(cedula)){
+                return i;  
+             }
+         }
+       return -1;
+    }
+    
+    public int cerrarCuenta(int numeroCuenta){        
+         for(int i=0;i<clientes.size();i++){              
+             ArrayList<Cuenta> cuentas=clientes.get(i).getCuentas();
+             for(int j=0;j<cuentas.size();j++){
+                if(cuentas.get(j).getNumero()==numeroCuenta){
+                   cuentas.get(j).cerrar();
+                   return 1;
+                } 
+             }
+         }
+         return -1;
+    }
+    
+    public Cliente getCliente(int pos){
+        return clientes.get(pos);
     }
 
 }

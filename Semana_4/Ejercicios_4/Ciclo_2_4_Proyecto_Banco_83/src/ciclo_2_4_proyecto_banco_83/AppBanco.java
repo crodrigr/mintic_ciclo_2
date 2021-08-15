@@ -6,15 +6,20 @@ import java.util.Scanner;
 public class AppBanco {
 
     static Scanner leer = new Scanner(System.in);
+    static int NumeroCuenta=0;
 
     public static void main(String[] args) {
 
         Banco banco = new Banco(1, "Manos Amigas", "Cr 48 No 89-915");
         banco.setClientes(loadClientes());
         banco.setEmpleados(loadEmpleados());
+        NumeroCuenta=banco.getNumeroCuenta();
         banco.display();
 
         int opcion = 0;
+        String cedula;
+        int numeroCta;
+        int encontrado;
         do {
             opcion = menu();
             switch (opcion) {
@@ -25,12 +30,49 @@ public class AppBanco {
                     break;
                 case 2:
                     System.out.println("Crear cliente");
+                    Cliente c=crearCliente();
+                    banco.setCliente(c);
                     break;
                 case 3:
                     System.out.println("Abrir cuenta");
+                    System.out.println("Ingrese la cedula del cliente: ");
+                    cedula=leer.next();
+                    encontrado=banco.buscarCliente(cedula);
+                    if(encontrado!=-1){
+                      Cuenta cta=null;
+                      banco.getCliente(encontrado).display();
+                      System.out.println("Que tipo de cuenta es: ");
+                      System.out.println("1.Ahorro");
+                      System.out.println("2.Corriente");
+                      int opcuenta=leer.nextInt();
+                      if(opcuenta==1){
+                        cta=crearCuentaAhorro();  
+                      }else if(opcuenta==2){
+                        cta=crearCuentaCorriente();  
+                      }else{
+                        System.out.println("Opcion no valida"); 
+                      }
+                      if(cta!=null){
+                        banco.abrirCuentaCliente(encontrado, cta);
+                        System.out.println("Se creo con exito la cuenta del cliente"); 
+                      }
+                      
+                    }else{
+                     System.out.println("No existe el cliente con esa cedula");
+                    }
+                    
+                    
                     break;
                 case 4:
-                    System.out.println("Cerrar cuenta");
+                    System.out.println("Cerrar cuenta");                    
+                    System.out.println("Ingrese numero de la cuenta: ");
+                    numeroCta=leer.nextInt();
+                    encontrado=banco.cerrarCuenta(numeroCta);
+                    if(encontrado==1){
+                     System.out.println("La cuenta se cerro correctamente ");
+                    }else{
+                    System.out.println("No existe una cuenta con ese número ");
+                    }
                     break;
                 case 5:
                     System.out.println("Consignar cuenta");
@@ -98,6 +140,35 @@ public class AppBanco {
         clientes.add(client3);
         return clientes;
 
+    }
+    
+     public static Cuenta crearCuentaAhorro() {
+         NumeroCuenta++;
+         System.out.println("Que monto de dinero va abrir la cuenta: ");
+         double saldo=leer.nextDouble();
+        return new Ahorro(NumeroCuenta,saldo,2);
+    }
+     
+    public static Cuenta crearCuentaCorriente() {
+         NumeroCuenta++;
+         System.out.println("Que monto de dinero va abrir la cuenta: ");
+         double saldo=leer.nextDouble();
+        return new Corriente(NumeroCuenta,saldo,3);
+    }
+    
+    public static Cliente crearCliente() {
+        System.out.println("Ingrese nombres del empleado");
+        String nombres = leer.next();
+        System.out.println("Ingrese apellidos del empleado");
+        String apellidos = leer.next();
+        System.out.println("Ingrese la cedula del empleado");
+        String cedula = leer.next();
+        System.out.println("Ingrese direccion del empleado");
+        String direccion = leer.next();
+        System.out.println("Ingrese telefono del empleado");
+        String telefono = leer.next();
+        Cliente cliente = new Cliente(nombres, apellidos, cedula, direccion, telefono);
+        return cliente;
     }
 
     public static Empleado crearEmpleado() {
