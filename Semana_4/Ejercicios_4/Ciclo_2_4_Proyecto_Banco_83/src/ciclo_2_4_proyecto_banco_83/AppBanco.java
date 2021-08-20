@@ -55,13 +55,10 @@ public class AppBanco {
                       if(cta!=null){
                         banco.abrirCuentaCliente(encontrado, cta);
                         System.out.println("Se creo con exito la cuenta del cliente"); 
-                      }
-                      
+                      }                      
                     }else{
                      System.out.println("No existe el cliente con esa cedula");
-                    }
-                    
-                    
+                    }    
                     break;
                 case 4:
                     System.out.println("Cerrar cuenta");                    

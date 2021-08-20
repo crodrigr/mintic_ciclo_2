@@ -86,9 +86,13 @@ public class Libreria {
         for (Publicacion p : publicaciones) {
             System.out.println("-----------------------------");
             if (p instanceof Libro) {
+                Libro l=(Libro)p; //casting   Integer.toString("8");
+                System.out.println("Numero de paginas (casnting): "+l.getNumPaginas());
                 System.out.println("Este objeto es un libro");
             }
             if (p instanceof Disco) {
+                Disco d=(Disco)p;
+                System.out.println("Duración (casnting): "+((Disco) p).getDuracion());
                 System.out.println("Este objeto es un disco");
             }
             p.mostrar();
