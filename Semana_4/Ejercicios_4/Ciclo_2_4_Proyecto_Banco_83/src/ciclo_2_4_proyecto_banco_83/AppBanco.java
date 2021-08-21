@@ -6,76 +6,97 @@ import java.util.Scanner;
 public class AppBanco {
 
     static Scanner leer = new Scanner(System.in);
-    static int NumeroCuenta=0;
+    static int NumeroCuenta = 0;
 
     public static void main(String[] args) {
 
         Banco banco = new Banco(1, "Manos Amigas", "Cr 48 No 89-915");
         banco.setClientes(loadClientes());
         banco.setEmpleados(loadEmpleados());
-        NumeroCuenta=banco.getNumeroCuenta();
+        NumeroCuenta = banco.getNumeroCuenta();
         banco.display();
 
         int opcion = 0;
         String cedula;
         int numeroCta;
         int encontrado;
+        double valor;
         do {
             opcion = menu();
             switch (opcion) {
                 case 1:
                     System.out.println("Crear empleado");
-                    Empleado e=crearEmpleado();
+                    Empleado e = crearEmpleado();
                     banco.setEmpleado(e);
                     break;
                 case 2:
                     System.out.println("Crear cliente");
-                    Cliente c=crearCliente();
+                    Cliente c = crearCliente();
                     banco.setCliente(c);
                     break;
                 case 3:
                     System.out.println("Abrir cuenta");
                     System.out.println("Ingrese la cedula del cliente: ");
-                    cedula=leer.next();
-                    encontrado=banco.buscarCliente(cedula);
-                    if(encontrado!=-1){
-                      Cuenta cta=null;
-                      banco.getCliente(encontrado).display();
-                      System.out.println("Que tipo de cuenta es: ");
-                      System.out.println("1.Ahorro");
-                      System.out.println("2.Corriente");
-                      int opcuenta=leer.nextInt();
-                      if(opcuenta==1){
-                        cta=crearCuentaAhorro();  
-                      }else if(opcuenta==2){
-                        cta=crearCuentaCorriente();  
-                      }else{
-                        System.out.println("Opcion no valida"); 
-                      }
-                      if(cta!=null){
-                        banco.abrirCuentaCliente(encontrado, cta);
-                        System.out.println("Se creo con exito la cuenta del cliente"); 
-                      }                      
-                    }else{
-                     System.out.println("No existe el cliente con esa cedula");
-                    }    
+                    cedula = leer.next();
+                    encontrado = banco.buscarCliente(cedula);
+                    if (encontrado != -1) {
+                        Cuenta cta = null;
+                        banco.getCliente(encontrado).display();
+                        System.out.println("Que tipo de cuenta es: ");
+                        System.out.println("1.Ahorro");
+                        System.out.println("2.Corriente");
+                        int opcuenta = leer.nextInt();
+                        if (opcuenta == 1) {
+                            cta = crearCuentaAhorro();
+                        } else if (opcuenta == 2) {
+                            cta = crearCuentaCorriente();
+                        } else {
+                            System.out.println("Opcion no valida");
+                        }
+                        if (cta != null) {
+                            banco.abrirCuentaCliente(encontrado, cta);
+                            System.out.println("Se creo con exito la cuenta del cliente");
+                        }
+                    } else {
+                        System.out.println("No existe el cliente con esa cedula");
+                    }
                     break;
                 case 4:
-                    System.out.println("Cerrar cuenta");                    
+                    System.out.println("Cerrar cuenta");
                     System.out.println("Ingrese numero de la cuenta: ");
-                    numeroCta=leer.nextInt();
-                    encontrado=banco.cerrarCuenta(numeroCta);
-                    if(encontrado==1){
-                     System.out.println("La cuenta se cerro correctamente ");
-                    }else{
-                    System.out.println("No existe una cuenta con ese número ");
+                    numeroCta = leer.nextInt();
+                    encontrado = banco.cerrarCuenta(numeroCta);
+                    if (encontrado == 1) {
+                        System.out.println("La cuenta se cerro correctamente ");
+                    } else {
+                        System.out.println("No existe una cuenta con ese número ");
                     }
                     break;
                 case 5:
                     System.out.println("Consignar cuenta");
+                    System.out.println("Ingrese numero de la cuenta: ");
+                    numeroCta = leer.nextInt();
+                    System.out.println("Ingrese el valor a consignar: ");
+                    valor = leer.nextDouble();
+                    encontrado = banco.consignarCuenta(numeroCta, valor);
+                    if (encontrado == 1) {
+                        System.out.println("La consignación se hizo exitosamente!! ");
+                    } else {
+                        System.out.println("No existe una cuenta con ese número ");
+                    }
                     break;
                 case 6:
                     System.out.println("Retirar cuenta");
+                    System.out.println("Ingrese numero de la cuenta: ");
+                    numeroCta = leer.nextInt();
+                    System.out.println("Ingrese el valor a consignar: ");
+                    valor = leer.nextDouble();
+                    encontrado = banco.retirarCuenta(numeroCta, valor);
+                    if (encontrado == 1) {
+                        System.out.println("El retiro se hizo exitosamente!! ");
+                    } else {
+                        System.out.println("No existe una cuenta con ese número ");
+                    }
                     break;
                 case 7:
                     System.out.println("Solicitar prestamo");
@@ -85,6 +106,7 @@ public class AppBanco {
                     break;
                 case 9:
                     System.out.println("Proceso");
+                    banco.procesoCalcularIntereses();
                     break;
                 case 10:
                     banco.displayClientes();
@@ -129,30 +151,36 @@ public class AppBanco {
 
     public static ArrayList<Cliente> loadClientes() {
         ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        Cuenta c1 = new Ahorro(1, 100000, 2);
+        Cuenta c2 = new Ahorro(2, 200000, 2);
+        Cuenta c3 = new Ahorro(3, 300000, 2);
         Cliente client1 = new Cliente("Camilo", "Rodriguez", "125888", "Cra 25 No98-32", "3155487");
         Cliente client2 = new Cliente("Andres", "Rangel", "15874411", "Calle 59 No9-26", "315875548");
         Cliente client3 = new Cliente("Humberto", "Galindo", "3789552", "Cr 27a No55-96", "658785");
+        client1.setCuenta(c1);
+        client2.setCuenta(c2);
+        client3.setCuenta(c3);
         clientes.add(client1);
         clientes.add(client2);
         clientes.add(client3);
         return clientes;
 
     }
-    
-     public static Cuenta crearCuentaAhorro() {
-         NumeroCuenta++;
-         System.out.println("Que monto de dinero va abrir la cuenta: ");
-         double saldo=leer.nextDouble();
-        return new Ahorro(NumeroCuenta,saldo,2);
+
+    public static Cuenta crearCuentaAhorro() {
+        NumeroCuenta++;
+        System.out.println("Que monto de dinero va abrir la cuenta: ");
+        double saldo = leer.nextDouble();
+        return new Ahorro(NumeroCuenta, saldo, 2);
     }
-     
+
     public static Cuenta crearCuentaCorriente() {
-         NumeroCuenta++;
-         System.out.println("Que monto de dinero va abrir la cuenta: ");
-         double saldo=leer.nextDouble();
-        return new Corriente(NumeroCuenta,saldo,3);
+        NumeroCuenta++;
+        System.out.println("Que monto de dinero va abrir la cuenta: ");
+        double saldo = leer.nextDouble();
+        return new Corriente(NumeroCuenta, saldo, 3);
     }
-    
+
     public static Cliente crearCliente() {
         System.out.println("Ingrese nombres del empleado");
         String nombres = leer.next();

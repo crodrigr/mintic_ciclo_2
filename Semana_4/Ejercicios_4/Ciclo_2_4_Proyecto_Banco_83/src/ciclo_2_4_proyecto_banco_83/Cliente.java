@@ -27,6 +27,10 @@ public class Cliente extends Persona{
         this.cuentas = cuentas;
     }
     
+    public void setCuenta(Cuenta c) {
+        this.cuentas.add(c);
+    }
+    
     public void guardarCuenta(Cuenta cuenta){
        this.cuentas.add(cuenta);
     }

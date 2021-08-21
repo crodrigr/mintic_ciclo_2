@@ -49,6 +49,18 @@ public abstract class Cuenta {
        this.estado=false;
        this.saldo=0;
     }
+    
+    public void consignar(double valor){
+        this.saldo+=valor;
+    }
+    
+    public void retirar(double valor){
+         if(valor<=this.saldo){
+            this.saldo-=valor;
+         }else{
+           System.out.println("Fondos no suficientes");
+         }
+    }
 
     public void display() {
         System.out.println("Numero: " + this.numero);

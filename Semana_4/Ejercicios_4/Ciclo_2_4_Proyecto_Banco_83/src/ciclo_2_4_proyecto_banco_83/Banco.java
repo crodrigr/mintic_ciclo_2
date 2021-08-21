@@ -123,8 +123,45 @@ public class Banco {
          return -1;
     }
     
+    public int consignarCuenta(int numeroCuenta,double valor){        
+         for(int i=0;i<clientes.size();i++){              
+             ArrayList<Cuenta> cuentas=clientes.get(i).getCuentas();
+             for(int j=0;j<cuentas.size();j++){
+                if(cuentas.get(j).getNumero()==numeroCuenta){
+                   cuentas.get(j).consignar(valor);
+                   return 1;
+                } 
+             }
+         }
+         return -1;
+    }
+    
+     public int retirarCuenta(int numeroCuenta,double valor){        
+         for(int i=0;i<clientes.size();i++){              
+             ArrayList<Cuenta> cuentas=clientes.get(i).getCuentas();
+             for(int j=0;j<cuentas.size();j++){
+                if(cuentas.get(j).getNumero()==numeroCuenta){
+                   cuentas.get(j).retirar(valor);
+                   return 1;
+                } 
+             }
+         }
+         return -1;
+    }
+    
     public Cliente getCliente(int pos){
         return clientes.get(pos);
+    }
+    
+     public void procesoCalcularIntereses(){        
+         for(int i=0;i<clientes.size();i++){              
+             ArrayList<Cuenta> cuentas=clientes.get(i).getCuentas();
+             for(int j=0;j<cuentas.size();j++){
+                 cuentas.get(j).calcularInteres();
+             }
+         }
+         System.out.println("Proceso de calcular intereses finalizó correctamente!");
+         
     }
 
 }

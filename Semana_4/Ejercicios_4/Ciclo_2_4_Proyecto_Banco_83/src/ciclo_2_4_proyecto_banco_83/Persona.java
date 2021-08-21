@@ -67,7 +67,9 @@ public class Persona {
       System.out.println("Dirección: "+this.direccion);
       System.out.println("Telefono: "+this.telefono);
       
+      
     }
+
     
     
 
