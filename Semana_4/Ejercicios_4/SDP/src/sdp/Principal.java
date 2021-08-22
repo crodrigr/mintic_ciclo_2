@@ -40,22 +40,7 @@ public class Principal extends javax.swing.JFrame {
     
   });
     
-    jTableCiudadano.getModel().addTableModelListener(
-new TableModelListener() 
-{
-    //DefaultTableModel model =new DefaultTableModel();
-    public void tableChanged(TableModelEvent evt) 
-    {
-       int i = jTableCiudadano.getSelectedRow();
-        nombres=(jTableCiudadano.getValueAt(i,1).toString());
-        apellidos=(jTableCiudadano.getValueAt(i,2).toString());
-        direccion=(jTableCiudadano.getValueAt(i,3).toString());
-        telefono=(jTableCiudadano.getValueAt(i,4).toString());
-        cedula=(jTableCiudadano.getValueAt(i,5).toString());
-        cromosoma=(jTableCiudadano.getValueAt(i,6).toString());
-    }
-});
-  
+
     }
 
     /** This method is called from within the constructor to
