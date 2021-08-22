@@ -3,6 +3,7 @@ package sdp;
 
 public class Persona {
     
+    private int    id;
     private String nombres;
     private String apellidos;
     private String direccion;
@@ -12,12 +13,13 @@ public class Persona {
     public Persona() {
     }
     
-    public Persona(String nombres, String apellidos, String direccion, String telefono, String cedula) {
+    public Persona(int id,String nombres, String apellidos, String direccion, String telefono, String cedula) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direccion = direccion;
         this.telefono = telefono;
         this.cedula = cedula;
+        this.id=id;
     }
 
     public String getNombres() {
@@ -58,6 +60,14 @@ public class Persona {
 
     public void setCedula(String cedula) {
         this.cedula = cedula;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

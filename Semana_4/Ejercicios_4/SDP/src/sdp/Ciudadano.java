@@ -7,10 +7,13 @@ public class Ciudadano extends Persona{
     public Ciudadano() {
     }
 
-    public Ciudadano(String cromosoma, String nombres, String apellidos, String direccion, String telefono, String cedula) {
-        super(nombres, apellidos, direccion, telefono, cedula);
+    public Ciudadano(int id,String cromosoma, String nombres, String apellidos, String direccion, String telefono, String cedula) {
+        super(id, nombres, apellidos, direccion, telefono, cedula);
         this.cromosoma = cromosoma;
     }
+
+    
+   
 
     public String getCromosoma() {
         return cromosoma;

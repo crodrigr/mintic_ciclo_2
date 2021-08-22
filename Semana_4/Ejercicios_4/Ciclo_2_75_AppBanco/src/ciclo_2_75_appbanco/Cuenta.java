@@ -6,6 +6,7 @@ public  abstract class  Cuenta {
     private int numero;
     private double saldo;
     private double porcentajeInteres;
+    private boolean activa;
 
     public Cuenta() {
     }
@@ -14,11 +15,22 @@ public  abstract class  Cuenta {
         this.numero = numero;
         this.saldo = saldo;
         this.porcentajeInteres = porcentajeInteres;
+        this.activa=true;
     }
 
     public int getNumero() {
         return numero;
     }
+
+    public boolean isActiva() {
+        return activa;
+    }
+
+    public void setActiva(boolean activa) {
+        this.activa = activa;
+    }
+    
+    
 
     public void setNumero(int numero) {
         this.numero = numero;
@@ -48,6 +60,12 @@ public  abstract class  Cuenta {
       System.out.println("Numero: "+this.numero);
       System.out.println("Saldo: "+this.saldo);
       System.out.println("Porcentaje: "+this.porcentajeInteres);
+       System.out.println("Activa: "+this.activa);
+    }
+    
+    public void cerrar(){
+      this.activa=false;
+      this.saldo=0;
     }
     
     public abstract void calcularIntereses();

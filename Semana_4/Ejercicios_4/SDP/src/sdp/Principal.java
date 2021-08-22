@@ -3,15 +3,59 @@ package sdp;
 
 
 import java.util.ArrayList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.*; 
 
 public class Principal extends javax.swing.JFrame {
 
   
+    String id="";
+    String nombres="";
+    String apellidos="";
+    String direccion="";
+    String telefono="";
+    String cedula="";
+    String cromosoma="";
+    
     private ArrayList<Ciudadano> ciudadanos =new ArrayList<Ciudadano>();
     
     public Principal() {
         initComponents();
-       
+        
+    jTableCiudadano.addMouseListener(new MouseAdapter() {
+//    DefaultTableModel model =new DefaultTableModel();
+    public void mouseClicked (MouseEvent e) {
+        int i = jTableCiudadano.getSelectedRow();
+        id=(jTableCiudadano.getValueAt(i,0).toString());
+        nombres=(jTableCiudadano.getValueAt(i,1).toString());
+        apellidos=(jTableCiudadano.getValueAt(i,2).toString());
+        direccion=(jTableCiudadano.getValueAt(i,3).toString());
+        telefono=(jTableCiudadano.getValueAt(i,4).toString());
+        cedula=(jTableCiudadano.getValueAt(i,5).toString());
+        cromosoma=(jTableCiudadano.getValueAt(i,6).toString());
+    
+    }
+    
+  });
+    
+    jTableCiudadano.getModel().addTableModelListener(
+new TableModelListener() 
+{
+    //DefaultTableModel model =new DefaultTableModel();
+    public void tableChanged(TableModelEvent evt) 
+    {
+       int i = jTableCiudadano.getSelectedRow();
+        nombres=(jTableCiudadano.getValueAt(i,1).toString());
+        apellidos=(jTableCiudadano.getValueAt(i,2).toString());
+        direccion=(jTableCiudadano.getValueAt(i,3).toString());
+        telefono=(jTableCiudadano.getValueAt(i,4).toString());
+        cedula=(jTableCiudadano.getValueAt(i,5).toString());
+        cromosoma=(jTableCiudadano.getValueAt(i,6).toString());
+    }
+});
+  
     }
 
     /** This method is called from within the constructor to
@@ -37,15 +81,20 @@ public class Principal extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        editar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtCromosoma = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCiudadano = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 255));
@@ -81,12 +130,30 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        txtApellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidosActionPerformed(evt);
+            }
+        });
+
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
-        jButton2.setText("Eliminar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                eliminarActionPerformed(evt);
             }
         });
 
@@ -97,10 +164,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Modificar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        editar.setText("Modificar");
+        editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                editarActionPerformed(evt);
             }
         });
 
@@ -111,9 +178,9 @@ public class Principal extends javax.swing.JFrame {
             .add(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jButton4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(editar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(eliminar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -122,92 +189,135 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jButton3)
                 .add(12, 12, 12)
-                .add(jButton4)
+                .add(editar)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jButton2)
+                .add(eliminar)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Cromosoma");
 
+        txtCromosoma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCromosomaActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("jLabel9");
+
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Id");
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .add(28, 28, 28)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel2)
-                    .add(jLabel3)
-                    .add(jLabel4)
-                    .add(jLabel5)
-                    .add(jLabel6)
-                    .add(jLabel8))
-                .add(14, 14, 14)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(28, 28, 28)
+                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel2)
+                                    .add(jPanel1Layout.createSequentialGroup()
+                                        .add(jLabel10)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jLabel9))
+                                    .add(jLabel3)))
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(26, 26, 26)
+                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(jLabel5)
+                                    .add(jPanel1Layout.createSequentialGroup()
+                                        .add(jLabel4)
+                                        .add(9, 9, 9)))))
+                        .add(28, 28, 28))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .add(jLabel6)
+                                .add(32, 32, 32))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .add(jLabel8)
+                                .add(18, 18, 18)))))
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(txtCromosoma, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                        .add(txtNombres)
-                        .add(txtApellidos)
-                        .add(txtCedula)
-                        .add(txtDireccion, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                        .add(txtTelefono)))
+                    .add(txtNombres)
+                    .add(txtApellidos)
+                    .add(txtCedula)
+                    .add(txtDireccion, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .add(txtTelefono)
+                    .add(txtId))
                 .add(18, 18, 18)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(19, 19, 19)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(txtNombres, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(18, 18, 18)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel3)
-                            .add(txtApellidos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(18, 18, 18)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel4)
-                            .add(txtCedula, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(18, 18, 18)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel5)
-                            .add(txtDireccion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel6)
-                            .add(txtTelefono, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(14, 14, 14)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel8)
-                    .add(txtCromosoma, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .add(jLabel9)
+                    .add(jLabel10)
+                    .add(txtId, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(10, 10, 10)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(txtNombres, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, Short.MAX_VALUE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtApellidos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel3))
+                .add(15, 15, 15)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtCedula, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel4))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtDireccion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 15, Short.MAX_VALUE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtTelefono, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtCromosoma, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel8))
+                .add(18, 18, 18))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 600, 250));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 600, 270));
 
         jTableCiudadano.setBackground(new java.awt.Color(0, 0, 0));
         jTableCiudadano.setForeground(new java.awt.Color(255, 255, 255));
         jTableCiudadano.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombres", "Apellidos", "Cedula", "Dirección", "Teléfono", "Cromosoma"
+                "Id", "Nombres", "Apellidos", "Cedula", "Dirección", "Teléfono", "Cromosoma"
             }
         ));
         jScrollPane2.setViewportView(jTableCiudadano);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 970, 130));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 980, 180));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgraund2.jpg"))); // NOI18N
         jLabel7.setText("jLabel7");
@@ -226,6 +336,12 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 580, 180));
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,17 +349,28 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombresActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        System.out.println("entro eliminarActionPerformed");
+        for(int i=0;i<ciudadanos.size();i++){           
+           if(id.equals(Integer.toString(ciudadanos.get(i).getId()))){
+              ciudadanos.remove(i);
+              System.out.println("entro elimino:"+i);
+           }
+        }
+        mostrar();
+    }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Ciudadano c=new Ciudadano(txtCromosoma.getText(),
+        
+        int id=Integer.parseInt(txtId.getText());
+        Ciudadano c=new Ciudadano(id,
+                                 txtCromosoma.getText(),
                                  txtNombres.getText(),
                                  txtApellidos.getText(),
                                  txtDireccion.getText(),
                                  txtTelefono.getText(),
                                  txtCedula.getText());
+        
         ciudadanos.add(c);
         txtCromosoma.setText("");
         txtNombres.setText("");
@@ -256,28 +383,67 @@ public class Principal extends javax.swing.JFrame {
     
     public void mostrar(){
     
-        String matris[][]=new String[ciudadanos.size()][6]; 
+        String matris[][]=new String[ciudadanos.size()][7]; 
         for(int i=0;i<ciudadanos.size();i++){
-            matris[i][0]=ciudadanos.get(i).getNombres();
-            matris[i][1]=ciudadanos.get(i).getApellidos(); 
-            matris[i][2]=ciudadanos.get(i).getCedula(); 
-            matris[i][3]=ciudadanos.get(i).getDireccion(); 
-            matris[i][4]=ciudadanos.get(i).getTelefono(); 
-            matris[i][5]=ciudadanos.get(i).getCromosoma();   
+            matris[i][0]=Integer.toString(ciudadanos.get(i).getId());
+            matris[i][1]=ciudadanos.get(i).getNombres();
+            matris[i][2]=ciudadanos.get(i).getApellidos(); 
+            matris[i][3]=ciudadanos.get(i).getCedula(); 
+            matris[i][4]=ciudadanos.get(i).getDireccion(); 
+            matris[i][5]=ciudadanos.get(i).getTelefono(); 
+            matris[i][6]=ciudadanos.get(i).getCromosoma();   
         }
          jTableCiudadano.setModel(new javax.swing.table.DefaultTableModel(
            matris,
             new String [] {
-                "Nombres", "Apellidos", "Cedula", "Dirección", "Teléfono", "Cromosoma"
+               "Id", "Nombres", "Apellidos", "Cedula", "Dirección", "Teléfono", "Cromosoma"
             }
         ));
         
        
     }
     
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        System.out.println("entro editarActionPerformed");
+        for(int i=0;i<ciudadanos.size();i++){           
+           if(id.equals(Integer.toString(ciudadanos.get(i).getId()))){
+//               ciudadanos.get(i).setNombres(nombres);
+//               ciudadanos.get(i).setApellidos(apellidos);
+//               ciudadanos.get(i).setDireccion(direccion);
+//               ciudadanos.get(i).setTelefono(telefono);
+//               ciudadanos.get(i).setCedula(cedula);
+//               ciudadanos.get(i).setCromosoma(cromosoma); 
+ciudadanos.get(i).setNombres("xxxxxx");
+System.out.println("apellidos"+apellidos);
+               ciudadanos.get(i).setApellidos(apellidos);
+               ciudadanos.get(i).setDireccion(direccion);
+               ciudadanos.get(i).setTelefono(telefono);
+               ciudadanos.get(i).setCedula(cedula);
+               ciudadanos.get(i).setCromosoma(cromosoma); 
+           }
+        }
+        mostrar();
+    }//GEN-LAST:event_editarActionPerformed
+
+    private void txtCromosomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCromosomaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_txtCromosomaActionPerformed
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,10 +485,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton editar;
+    private javax.swing.JButton eliminar;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -330,16 +497,20 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableCiudadano;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCromosoma;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
