@@ -56,6 +56,14 @@ public  abstract class  Cuenta {
       this.saldo+=valor;
     }
     
+    public void retirar(double valor){
+       if(valor<=this.saldo){
+          this.saldo-=valor;
+       }else{
+         System.out.println("Saldo insuficiente");
+       }
+    }
+    
     public void display(){
       System.out.println("Numero: "+this.numero);
       System.out.println("Saldo: "+this.saldo);

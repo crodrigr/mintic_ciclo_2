@@ -8,8 +8,9 @@ public class Cliente extends Persona{
     private ArrayList<Cuenta> cuentas;
 
     public Cliente(){
-    }   
+    } 
     
+       
     public Cliente(String nombres, String apellidos, String cedula, String direccion, String telefono) {
         super(nombres, apellidos, cedula, direccion, telefono);
         cuentas=new ArrayList<Cuenta>();

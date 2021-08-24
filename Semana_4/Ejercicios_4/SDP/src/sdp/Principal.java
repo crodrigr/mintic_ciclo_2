@@ -28,13 +28,13 @@ public class Principal extends javax.swing.JFrame {
 //    DefaultTableModel model =new DefaultTableModel();
     public void mouseClicked (MouseEvent e) {
         int i = jTableCiudadano.getSelectedRow();
-        id=(jTableCiudadano.getValueAt(i,0).toString());
-        nombres=(jTableCiudadano.getValueAt(i,1).toString());
-        apellidos=(jTableCiudadano.getValueAt(i,2).toString());
-        direccion=(jTableCiudadano.getValueAt(i,3).toString());
-        telefono=(jTableCiudadano.getValueAt(i,4).toString());
-        cedula=(jTableCiudadano.getValueAt(i,5).toString());
-        cromosoma=(jTableCiudadano.getValueAt(i,6).toString());
+        txtId.setText(jTableCiudadano.getValueAt(i,0).toString());
+        txtNombres.setText(jTableCiudadano.getValueAt(i,1).toString());
+        txtApellidos.setText(jTableCiudadano.getValueAt(i,2).toString());
+        txtDireccion.setText(jTableCiudadano.getValueAt(i,3).toString());
+        txtTelefono.setText(jTableCiudadano.getValueAt(i,4).toString());
+        txtCedula.setText(jTableCiudadano.getValueAt(i,5).toString());
+        txtCromosoma.setText(jTableCiudadano.getValueAt(i,6).toString());
     
     }
     
@@ -74,6 +74,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        btnLimpiar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCiudadano = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
@@ -162,11 +164,10 @@ public class Principal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(editar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(eliminar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(eliminar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(editar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                    .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -189,14 +190,26 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("jLabel9");
-
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Id");
 
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -243,14 +256,24 @@ public class Principal extends javax.swing.JFrame {
                     .add(txtTelefono)
                     .add(txtId))
                 .add(18, 18, 18)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(10, 10, 10)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(btnLimpiar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(19, 19, 19)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnLimpiar)
+                .add(18, 18, 18)
+                .add(jButton1)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(jPanel1Layout.createSequentialGroup()
                 .add(14, 14, 14)
@@ -285,7 +308,7 @@ public class Principal extends javax.swing.JFrame {
                 .add(18, 18, 18))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 600, 270));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 620, 270));
 
         jTableCiudadano.setBackground(new java.awt.Color(0, 0, 0));
         jTableCiudadano.setForeground(new java.awt.Color(255, 255, 255));
@@ -337,11 +360,12 @@ public class Principal extends javax.swing.JFrame {
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         System.out.println("entro eliminarActionPerformed");
         for(int i=0;i<ciudadanos.size();i++){           
-           if(id.equals(Integer.toString(ciudadanos.get(i).getId()))){
+           if(txtId.getText().equals(Integer.toString(ciudadanos.get(i).getId()))){
               ciudadanos.remove(i);
               System.out.println("entro elimino:"+i);
            }
         }
+        limpiar();
         mostrar();
     }//GEN-LAST:event_eliminarActionPerformed
 
@@ -391,20 +415,13 @@ public class Principal extends javax.swing.JFrame {
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         System.out.println("entro editarActionPerformed");
         for(int i=0;i<ciudadanos.size();i++){           
-           if(id.equals(Integer.toString(ciudadanos.get(i).getId()))){
-//               ciudadanos.get(i).setNombres(nombres);
-//               ciudadanos.get(i).setApellidos(apellidos);
-//               ciudadanos.get(i).setDireccion(direccion);
-//               ciudadanos.get(i).setTelefono(telefono);
-//               ciudadanos.get(i).setCedula(cedula);
-//               ciudadanos.get(i).setCromosoma(cromosoma); 
-ciudadanos.get(i).setNombres("xxxxxx");
-System.out.println("apellidos"+apellidos);
-               ciudadanos.get(i).setApellidos(apellidos);
-               ciudadanos.get(i).setDireccion(direccion);
-               ciudadanos.get(i).setTelefono(telefono);
-               ciudadanos.get(i).setCedula(cedula);
-               ciudadanos.get(i).setCromosoma(cromosoma); 
+           if(txtId.getText().equals(Integer.toString(ciudadanos.get(i).getId()))){
+               ciudadanos.get(i).setNombres(txtNombres.getText());            
+               ciudadanos.get(i).setApellidos(txtApellidos.getText());
+               ciudadanos.get(i).setDireccion(txtDireccion.getText());
+               ciudadanos.get(i).setTelefono(txtTelefono.getText());
+               ciudadanos.get(i).setCedula(txtCedula.getText());
+               ciudadanos.get(i).setCromosoma(txtCromosoma.getText()); 
            }
         }
         mostrar();
@@ -429,6 +446,24 @@ System.out.println("apellidos"+apellidos);
     private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosActionPerformed
+    
+    public void limpiar(){      
+      txtId.setText("");
+        txtCromosoma.setText("");
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCedula.setText("");
+    }
+    
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,8 +505,10 @@ System.out.println("apellidos"+apellidos);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton editar;
     private javax.swing.JButton eliminar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -17,6 +17,7 @@ public class Persona {
         this.cedula = cedula;
         this.direccion = direccion;
         this.telefono = telefono;
+                
     }
 
     public String getNombres() {

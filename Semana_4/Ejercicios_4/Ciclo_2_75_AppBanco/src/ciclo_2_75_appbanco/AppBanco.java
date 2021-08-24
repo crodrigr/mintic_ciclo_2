@@ -1,3 +1,4 @@
+
 package ciclo_2_75_appbanco;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class AppBanco {
         String cedula;
         int encontrado;
         int numCuenta;
+        double valor;
         do {
             opc = menu();
             switch (opc) {
@@ -47,9 +49,19 @@ public class AppBanco {
                     break;
                 case 5:
                     System.out.println("Consignar");
+                    System.out.println("Ingre el número de cuenta a consignar");
+                    numCuenta = leer.nextInt();
+                    System.out.println("Ingre el valor a consignar");
+                    valor=leer.nextDouble();
+                    banco.consiganarCuenta(numCuenta, valor);
                     break;
                 case 6:
                     System.out.println("Retirar");
+                    System.out.println("Ingre el número de cuenta a retirar");
+                    numCuenta = leer.nextInt();
+                    System.out.println("Ingre el valor a retirar");
+                    valor=leer.nextDouble();
+                    banco.retirarCuenta(numCuenta, valor);
                     break;
                 case 7:
                     System.out.println("Solicitar prestamo");
@@ -59,6 +71,7 @@ public class AppBanco {
                     break;
                 case 9:
                     System.out.println("Proceso calcular intereses cuentas del banco");
+                    banco.calcularInteresesTodasCuentas();
                     break;
                 case 10:
                     banco.mostrarClientes();
