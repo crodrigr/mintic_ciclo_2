@@ -1,4 +1,3 @@
-
 package ciclo_2_75_appbanco;
 
 import java.util.ArrayList;
@@ -19,11 +18,11 @@ public class AppBanco {
         double valor;
         do {
             opc = menu();
+
             switch (opc) {
                 case 1:
                     System.out.println("Crear Empleado");
-                    crearEmpleado(banco);
-                    System.out.println("El empleado se guardo con exito!");
+                    crearEmpleado(banco);                    
                     break;
                 case 2:
                     System.out.println("Crear Cliente");
@@ -36,7 +35,7 @@ public class AppBanco {
                     cedula = leer.next();
                     encontrado = banco.buscarCliente(cedula);
                     if (encontrado != -1) {
-                       crearCuenta(banco,encontrado);
+                        crearCuenta(banco, encontrado);
                     } else {
                         System.out.println("Cliente no existe");
                     }
@@ -52,7 +51,7 @@ public class AppBanco {
                     System.out.println("Ingre el número de cuenta a consignar");
                     numCuenta = leer.nextInt();
                     System.out.println("Ingre el valor a consignar");
-                    valor=leer.nextDouble();
+                    valor = leer.nextDouble();
                     banco.consiganarCuenta(numCuenta, valor);
                     break;
                 case 6:
@@ -60,7 +59,7 @@ public class AppBanco {
                     System.out.println("Ingre el número de cuenta a retirar");
                     numCuenta = leer.nextInt();
                     System.out.println("Ingre el valor a retirar");
-                    valor=leer.nextDouble();
+                    valor = leer.nextDouble();
                     banco.retirarCuenta(numCuenta, valor);
                     break;
                 case 7:
@@ -107,16 +106,15 @@ public class AppBanco {
         System.out.println("1. Ahorros");
         System.out.println("2. Corriente");
         int tipo = leer.nextInt();
-        if(tipo>=1 && tipo<=2){
-        Cuenta c;
-        if (tipo == 1) {
-          c=new Ahorro(banco.getCantidadCuentas()+1,saldo,porc);
-        } else {
-          c=new Corriente(banco.getCantidadCuentas()+1,saldo,porc);
+        if (tipo >= 1 && tipo <= 2) {
+            Cuenta c;
+            if (tipo == 1) {
+                c = new Ahorro(banco.getCantidadCuentas() + 1, saldo, porc);
+            } else {
+                c = new Corriente(banco.getCantidadCuentas() + 1, saldo, porc);
+            }
+            banco.getClientes().get(posCliente).guardarCuenta(c);
         }
-         banco.getClientes().get(posCliente).guardarCuenta(c);
-        }
-        
 
     }
 
