@@ -380,7 +380,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-          labelRta.setText("Culpable: Camilo Rodriguez 80% coincidencia");
+          
+        String cromoCrime= textCromosomaCrimen.getText();
+        
+        for(Ciudadano c: ciudadanos){
+           c.calcularCoincidencia(cromoCrime);
+           System.out.println("%: "+c.getPorcentajeCoincidencia());
+        }
+        
+        labelRta.setText("Culpable: Camilo Rodriguez 80% coincidencia cromosoma: "+cromoCrime);
+        
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
